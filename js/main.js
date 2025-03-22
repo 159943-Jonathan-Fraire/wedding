@@ -29,7 +29,7 @@
 
 
     // Modal Video
-    $(document).ready(function () {
+/*     $(document).ready(function () {
         var $videoSrc;
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
@@ -43,7 +43,7 @@
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
         })
-    });
+    }); */
 
 
     // Scroll to Bottom
@@ -138,9 +138,8 @@ x = setInterval(function () {
 
 
 
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwrwAxaqynPOMiSSHJMgOTUybt_Xg9xweUEX5tPk7la9KjGtqeyIb4RSlPRj5jOmgHvCQ/exec'
 
-
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxGbhbEGw5sUsQzJkyElz2ju7zsqsdLikla5cArw9eVPaJ5FkjUk9hWsbXF-XrTj1V-CQ/exec'
 const form = document.forms['Boda']
 
 form.addEventListener('submit', e => {
@@ -148,7 +147,7 @@ form.addEventListener('submit', e => {
     e.preventDefault()
 
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => alert("Thank you! Form is submitted"))
+        .then(response => alert("Gracias por tu confirmación!"))
         .then(() => { window.location.reload(); })
         .catch(error => console.error('Error!', error.message))
 })
