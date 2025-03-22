@@ -9533,10 +9533,11 @@ a.text-dark:hover, a.text-dark:focus {
 
 .carousel-caption {
   top: 0;
+  padding-top: 300px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.25);
   z-index: 1;
 }
 
@@ -9787,7 +9788,7 @@ a.text-dark:hover, a.text-dark:focus {
   margin: 5px;
   /* border: 3px solid #000000; */ /* Eliminado para quitar el contorno negro */
   border-radius: 5px;
-  background-color: rgba(211, 211, 211, 0.20); /* Fondo gris claro con 80% de opacidad */
+  background-color: rgba(211, 211, 211, 0.60); /* Fondo gris claro con 80% de opacidad */
 }
 
 .cartel>div {
