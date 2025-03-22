@@ -535,7 +535,9 @@ https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4
 
 
 
+    var cors = require('cors');
 
+    app.use(cors({ origin: true, credentials: true }));
 
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4CS5q6Qo3gDhj8MNmkgmXcSAEQKtXg/exec'
