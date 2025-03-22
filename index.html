@@ -65,7 +65,7 @@
                     <img class="position-absolute w-100 h-100" src="img/carousel-1.jpeg" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Jonathan & Daniela</h1>
+                            <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Daniela & Jonathan</h1>
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
                                 <h3 class="text-uppercase font-weight-normal text-white m-0"
                                     style="letter-spacing: 2px;">31-05-2025</h3>
@@ -358,7 +358,7 @@
                     </h5>
                     <h4 class="mb-3">Coco's terraza</h4>
                     <p class="mb-2">Almagre #1022</p>
-                    <p class="mb-0">7:00PM - 11:00PM</p>
+                    <p class="mb-0">7:00PM - 02:00AM</p>
                     <p><br></p>
 
                     <div class="map-responsive">
@@ -413,7 +413,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="text-center">
-                        <form name="Boda" id="Boda">
+                        <form method="past" action="" name="Boda">
                             <div class="form-row">
                                 <div class="form-group col-12">
                                     <input type="text" name="nombre"
@@ -423,7 +423,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-sm-6">
-                                    <select name="numero_invitados" class="form-control bg-secondary border-0"
+                                    <select name="invitados" class="form-control bg-secondary border-0"
                                         style="height: 52px;" required>
                                         <option value="" disabled selected>Numero de invitados</option>
                                         <option value="1">1</option>
@@ -446,7 +446,7 @@
                                     placeholder="Mensaje" required></textarea>
                             </div>
                             <div>
-                                <button type="button" onclick="SendFormGoogleSheets()"
+                                <button type="submit" value="Submit" id="submit"
                                     class="btn btn-outline-primary font-weight-bold py-3 px-5">Enviar</button>
                             </div>
                         </form>
@@ -505,7 +505,13 @@
 </body>
 
 </html>
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4CS5q6Qo3gDhj8MNmkgmXcSAEQKtXg/exec
+
 <script>
 
     const second = 1000,
@@ -528,19 +534,23 @@
 
 
 
-    function SendFormGoogleSheets() {
-        $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4CS5q6Qo3gDhj8MNmkgmXcSAEQKtXg/exec',
-            type: 'post',
-            data: $("#Boda").serializeArray(),
-            success: function () {
-                alert("Registro exitoso")
-            },
-            error: function () {
-                alert("Error en el Registro :(")
-            }
-        });
-    }
+
+
+
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4CS5q6Qo3gDhj8MNmkgmXcSAEQKtXg/exec'
+
+    const form = document.forms['boda']
+
+    form.addEventListener('submit', e => {
+
+        e.preventDefault()
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert("Thank you! Form is submitted"))
+            .then(() => { window.location.reload(); })
+            .catch(error => console.error('Error!', error.message))
+    })
 
 
 
