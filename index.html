@@ -48,7 +48,7 @@
             </a>
             <div class="navbar-nav mr-auto py-0">
                 <!-- <a href="#family" class="nav-item nav-link">Family</a> -->
-                <a href="#event" class="nav-item nav-link">Event</a>
+                <a href="#event" class="nav-item nav-link">Evento</a>
                 <a href="#rsvp" class="nav-item nav-link">Confirmación</a>
                 <!-- <a href="#contact" class="nav-item nav-link">Contact</a> -->
             </div>
@@ -246,7 +246,7 @@
                     <div class="col-md-6 text-center text-md-right">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 mr-md-3">
                             <h4 class="mb-2">Primera Foto juntos</h4>
-                            <p class="text-uppercase mb-2">Abril 2021</p>
+                            <p class="text-uppercase mb-2">Abril 2020</p>
                             <p class="m-0"> Casa de Daniela</p>
                         </div>
                     </div>
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-center text-md-center">
-                        <img class="img-fluid ml-md-3" src="img/proposal.jpg" alt="" width="300px" >
+                        <img class="img-fluid ml-md-3" src="img/proposal.jpg" alt="" width="300px">
                     </div>
                 </div>
 
@@ -392,7 +392,7 @@
                                     placeholder="Mensaje" required></textarea>
                             </div>
                             <div>
-                                <button type="button"
+                                <button type="submit" value="Submit" id="submit"
                                     class="btn btn-outline-primary font-weight-bold py-3 px-5">Enviar</button>
                             </div>
                         </form>
@@ -473,6 +473,18 @@
         }, second)
 
 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4CS5q6Qo3gDhj8MNmkgmXcSAEQKtXg/exec'
 
+    const form = document.forms['Boda']
+
+    form.addEventListener('submit', e => {
+
+        e.preventDefault()
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => alert("Thank you! Form is submitted"))
+            .then(() => { window.location.reload(); })
+            .catch(error => console.error('Error!', error.message))
+    })
 
 </script>
