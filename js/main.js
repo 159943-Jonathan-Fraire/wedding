@@ -115,3 +115,40 @@
     
 })(jQuery);
 
+const second = 1000,
+minute = second * 60,
+hour = minute * 60,
+day = hour * 24;
+
+let countDown = new Date('May 31, 2025 19:00:00').getTime(),
+x = setInterval(function () {
+
+    let now = new Date().getTime(),
+        distance = countDown - now;
+
+    document.getElementById('dias').innerText = Math.floor(distance / (day)),
+        document.getElementById('horas').innerText = Math.floor((distance % (day)) / (hour)),
+        document.getElementById('minutos').innerText = Math.floor((distance % (hour)) / (minute)),
+        document.getElementById('segundos').innerText = Math.floor((distance % (minute)) / second);
+
+}, second)
+
+
+
+
+
+
+
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxGbhbEGw5sUsQzJkyElz2ju7zsqsdLikla5cArw9eVPaJ5FkjUk9hWsbXF-XrTj1V-CQ/exec'
+const form = document.forms['Boda']
+
+form.addEventListener('submit', e => {
+
+    e.preventDefault()
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => alert("Thank you! Form is submitted"))
+        .then(() => { window.location.reload(); })
+        .catch(error => console.error('Error!', error.message))
+})
