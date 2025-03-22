@@ -534,11 +534,17 @@ https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4
 
 
 
-
-    var cors = require('cors');
-
-    app.use(cors({ origin: true, credentials: true }));
-
+    var whitelist = [
+        'http://0.0.0.0:3000',
+    ];
+    var corsOptions = {
+        origin: function (origin, callback) {
+            var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+            callback(null, originIsWhitelisted);
+        },
+        credentials: true
+    };
+    app.use(cors(corsOptions));
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwMULkfAoJokXVdiJRa3QWqW7NpdkPCnefVNFQr4CS5q6Qo3gDhj8MNmkgmXcSAEQKtXg/exec'
 
