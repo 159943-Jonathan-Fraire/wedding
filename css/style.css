@@ -2890,12 +2890,12 @@ fieldset:disabled a.btn {
 
 .btn-outline-dark:hover {
   color: #fff;
-  background-color: #121F38;
+  background-color: #13203a;
   border-color: #121F38;
 }
 
 .btn-outline-dark:focus, .btn-outline-dark.focus {
-  box-shadow: 0 0 0 0.2rem rgba(18, 31, 56, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(33, 57, 100, 0.5);
 }
 
 .btn-outline-dark.disabled, .btn-outline-dark:disabled {
